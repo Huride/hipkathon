@@ -1,0 +1,663 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Gather Town 사용법</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+}
+
+.simple-table-header {
+	background: rgb(247, 246, 243);
+	color: black;
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1bb4aa93-0296-48f0-adf9-58ec85bda6df" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">😎</span></div><h1 class="page-title">Gather Town 사용법</h1></header><div class="page-body"><p id="e8f0f507-c11f-4fcc-ba54-4d0ffdf83def" class=""><mark class="highlight-orange"><strong>목차</strong></mark></p><nav id="0e7e7bce-5542-4aff-84d6-3a7545a3af49" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9f035198-dd46-40fc-9643-102b85bf891f">🌚 힙커톤의 회고데이를 HIP하게 즐기시려면! 🌝</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#07ff0e59-634c-4902-8429-487576e1a16d">1. 데스크탑 혹은 노트북으로 접속, 네트워크는 와이파이 연결하기! </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7652a0e5-6613-4dab-990c-0fcb1a95d6b1">2. 참여자들간 서로를 알아보기 위해 꼭 <code>실명_팀이름</code>으로 입장! &amp; 마이크 OFF!</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#16cd5ee5-2d5b-4a7f-bfed-bf8fcf518945">3. 인포데스크에서 <strong><code>이아라님</code></strong>에게 인사해주세요!!! 아라님께서 안내를 도와드릴거에요</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c096b598-852a-4224-84b0-7ea3d2ec2126">4. 힙커톤타운에 입장했다면 팀별 좌석으로 착석!</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#23f35ee5-93b9-4dcd-bbb0-b548ebcd59f2">5. 마구마구 채팅 고고! </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3746d727-e161-4b4d-a989-720f1e44b388">6. 힙커톤 회고데이가 끝나면~🎶  리뷰 존에 후기를 남겨주세요! 힙커톤 팀은 피드백을 먹고 쑥쑥 자랍니다!</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cb2aea98-7d67-4288-8818-396092272fc1"><mark class="highlight-teal_background">시작화면에서 이렇게 설정해주세요! </mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e4f49d5-fd6f-4196-bb99-5d9b272b3768"><mark class="highlight-purple_background">단축키</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f1b24025-a2b0-49a1-bc26-be244158c3b7">장소별 기능 소개</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#67635500-1ea1-4eef-9219-e7e6989dad80"><mark class="highlight-blue_background">상대방과 대화&amp;채팅하기</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#17efc04e-c7f5-4c4c-8394-d0c91c3dc8a9"><mark class="highlight-orange_background">화면 공유하기</mark></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#30d349be-8b20-4a3e-9bc4-2515e36cedbe">상대방 위치 찾기 </a></div></nav><h2 id="9f035198-dd46-40fc-9643-102b85bf891f" class="">🌚 힙커톤의 회고데이를 HIP하게 즐기시려면! 🌝</h2><h3 id="07ff0e59-634c-4902-8429-487576e1a16d" class="">1. 데스크탑 혹은 노트북으로 접속, 네트워크는 와이파이 연결하기! </h3><ul id="e49af4b1-9135-403e-a63b-2d17e570ab74" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">모바일 접속은 제한되는 기능이 많고 핫스팟 접속은 끊기는 경우가 많아요</span> ㅠㅠ </li></ul><h3 id="7652a0e5-6613-4dab-990c-0fcb1a95d6b1" class="">2. 참여자들간 서로를 알아보기 위해 꼭 <code>실명_팀이름</code>으로 입장! &amp; 마이크 OFF!</h3><h3 id="16cd5ee5-2d5b-4a7f-bfed-bf8fcf518945" class="">3. 인포데스크에서 <strong><code>이아라님</code></strong>에게 인사해주세요!!! 아라님께서 안내를 도와드릴거에요</h3><h3 id="c096b598-852a-4224-84b0-7ea3d2ec2126" class="">4. 힙커톤타운에 입장했다면 팀별 좌석으로 착석!</h3><ul id="4a8de9bb-9f5e-4a6e-a30b-90c6468f48d5" class="bulleted-list"><li style="list-style-type:disc">앉는 척!만 해주시면 돼요 :D 실제 앉는 기능은 따로 없습니다!</li></ul><h3 id="23f35ee5-93b9-4dcd-bbb0-b548ebcd59f2" class="">5. 마구마구 채팅 고고! </h3><ul id="49929cf2-2c02-4cc4-9514-da1dcdde08c3" class="bulleted-list"><li style="list-style-type:disc">채팅 시 꼭 To Everyone으로 설정해주셔야 무대 위 진행자들에게 채팅이 보인답니다!</li></ul><h3 id="3746d727-e161-4b4d-a989-720f1e44b388" class="">6. 힙커톤 회고데이가 끝나면~🎶  리뷰 존에 후기를 남겨주세요! 힙커톤 팀은 피드백을 먹고 쑥쑥 자랍니다!</h3><hr id="25f6e579-b36a-4ba5-adb9-6dcb285cfbb6"/><p id="683d81a1-3b98-406d-af37-a28a7e7bdc5b" class="">
+</p><h3 id="cb2aea98-7d67-4288-8818-396092272fc1" class="block-color-teal_background"><mark class="highlight-teal_background">시작화면에서 이렇게 설정해주세요! </mark></h3><div id="59eabfe9-91c0-4288-b2ce-fb6b6413ca6d" class="column-list"><div id="b8c42c5e-1a21-45f4-b464-c17d8774373a" style="width:56.25%" class="column"><ul id="ff9a690d-52aa-4e74-9c61-e7fb519e40d8" class="bulleted-list"><li style="list-style-type:disc">이름: 원활한 진행을 위해 <strong><code>실명_팀이름</code></strong>으로 설정해주세요!</li></ul><ul id="d9230105-ee85-4848-b293-8db842a9d095" class="bulleted-list"><li style="list-style-type:disc">캐릭터 설정: edit character 버튼을 눌러 자유롭게 꾸며주세요! </li></ul><ul id="695049d2-070b-4fd6-9d2a-6f3e1c7a8ec7" class="bulleted-list"><li style="list-style-type:disc"><strong>비디오 </strong><code><strong>ON</strong></code></li></ul><ul id="6097c7fc-2bf6-478b-9ccb-8f2c0fea9b15" class="bulleted-list"><li style="list-style-type:disc"><strong>마이크 </strong><code><strong>OFF</strong></code></li></ul><ul id="fa35f4ac-70a8-4485-9eb9-c40f2f97944e" class="bulleted-list"><li style="list-style-type:disc">설정이 모두 끝났다면 Join the gathering 버튼을 눌러 맵에 입장해주세요! </li></ul><ul id="94fd6498-7d52-46d3-bb14-d4337f6f1c63" class="bulleted-list"><li style="list-style-type:disc">Chat Sounds를 꺼주세요!<p id="a496328c-eda2-43b2-bf33-7ac50d9cff47" class=""><code>setting</code> → <code>User</code> → <code>General</code> → <code>Chat sounds</code></p><figure id="803294f6-7ebd-4b35-82c1-30d80dfdb49a" class="image"><a href="Gather%20Tow%2080329/Untitled.png"><img style="width:976px" src="Gather%20Tow%2080329/Untitled.png"/></a></figure></li></ul><p id="18b3be8d-e384-4ab2-b587-3593ecca7764" class=""> </p></div><div id="50f472f4-8673-45d4-9dc3-dafef4f20bd0" style="width:43.75000000000001%" class="column"><figure id="3971fc12-8b2f-4ba8-9d5b-fcf3b3d509e2" class="image"><a href="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.09.03.png"><img style="width:1321px" src="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.09.03.png"/></a></figure></div></div><h3 id="1e4f49d5-fd6f-4196-bb99-5d9b272b3768" class="block-color-purple_background"><mark class="highlight-purple_background">단축키</mark></h3><div id="4cdc904b-25e1-4401-9c70-f3db6456559f" class="column-list"><div id="0a4b1f0a-c131-4232-96ce-34fdd66e7318" style="width:56.25%" class="column"><ul id="0a414ce5-30e3-4b4b-b9a7-92a0dc156020" class="bulleted-list"><li style="list-style-type:disc"><strong>방향키: 키보드 화살표 혹은 WASD</strong><p id="805ae260-2ff3-4a24-9d26-c26340c7a18e" class="">타운 내에서 방향을 조정하며 이동할 수 있습니다. </p></li></ul><ul id="80550699-c125-4bc6-92af-d82355a63445" class="bulleted-list"><li style="list-style-type:disc"><strong>Object 사용하기: X</strong><p id="84f910f9-f927-4dc2-b5bf-52f9eedd6f29" class="">가까이 다가가면 노랗게 빛나는 물건들은 X키를 눌러 내용을 확인할 수 있습니다. </p></li></ul><ul id="603cc360-782a-406d-96c1-a66133ce9824" class="bulleted-list"><li style="list-style-type:disc"><strong>이모티콘 사용: 숫자 1~6</strong><p id="7d2b7c5a-73c1-4a25-aeb1-8e376cc83f93" class="">숫자를 눌러 이모티콘을 사용할 수 있습니다. 본인의 상태를 표현해보세요! </p></li></ul><ul id="fa3143ed-cb3b-4add-a116-69d2dd40093c" class="bulleted-list"><li style="list-style-type:disc"><strong>춤추기: Z</strong> </li></ul><ul id="053564fb-3bbb-406b-b8c5-7edbd04423dd" class="bulleted-list"><li style="list-style-type:disc"><strong>지도 보기: 모니터 옆 지도 아이콘 클릭</strong><p id="1827bff6-cd5f-415d-a6af-6542184fd116" class="">맵 전체 구성과 현재 위치를 볼 수 있습니다.</p></li></ul><ul id="c12a2e45-c8f2-4496-aaeb-7a1fb47e3b59" class="bulleted-list"><li style="list-style-type:disc"><strong>고스트모드: G </strong><p id="667d5a03-75cf-4e58-b478-ae9d9cc55b7d" class="">고스트 모드로 이동하면 물체를 통과할 수 있습니다. </p><p id="b733f1b8-2a8f-4722-8e3d-3d06684d7053" class="">주로 인원이 꽉 찬 Private Space에 참여하고 싶을 때 사용합니다. </p></li></ul></div><div id="ee4ed692-b55b-4d73-a6a2-fa9b29b61057" style="width:43.74999999999999%" class="column"><figure id="152b58db-b45d-46df-86c5-440d156d0c31" class="image"><a href="Gather%20Tow%2080329/2021-07-21__11.54.24.png"><img style="width:158px" src="Gather%20Tow%2080329/2021-07-21__11.54.24.png"/></a></figure><figure id="a86bac36-3132-4a10-b322-31323fe5e3f6" class="image"><a href="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.06.38_1.png"><img style="width:288px" src="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.06.38_1.png"/></a></figure></div></div><h3 id="f1b24025-a2b0-49a1-bc26-be244158c3b7" class="block-color-yellow_background">장소별 기능 소개</h3><ul id="aec628ad-4e1c-40ba-9716-2717468ff30d" class="bulleted-list"><li style="list-style-type:disc">5칸 이내의 참가자들과는 서로 대화할 수 있습니다. </li></ul><ul id="7d77f7b4-a353-4699-b6fe-cc9ae39842e2" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-pink"><em>Private Space</em></mark></li></ul><p id="5857ded0-3a52-4375-bda4-df95c664fb2b" class=""><span style="border-bottom:0.05em solid">Private Space안에 있는 참가자들만</span> 이야기를 함께 나눌 수 있습니다. </p><p id="4eae05d1-3709-463c-b9a0-b1b030f5462a" class=""><span style="border-bottom:0.05em solid">고스트 모드 (&#x27;G&#x27; 버튼)</span> 를 사용하면 이미 꽉찬 프라이빗 공간에 들어가서 다른 참여자들의 이야기를 들을 수 있습니다. 다만, 다른 참가자들은 당신의 목소리를 듣거나 대화할 수 없습니다. </p><ul id="5a4daa7c-f86c-4241-ae0a-46d6f12e3980" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-yellow"><em>Spotlight Space </em></mark></li></ul><p id="df0e66a5-e464-4f43-8c4a-1fa2793c68d0" class="">이 공간에서 발표하면 맵 내의 모든 사람들이 당신의 발표를 들을 수 있습니다. MC와 본인등판 출연자들의 공간입니다. </p><p id="32f42c70-d492-4381-8308-f077a46f914d" class="">
+</p><h3 id="67635500-1ea1-4eef-9219-e7e6989dad80" class="block-color-blue_background"><mark class="highlight-blue_background">상대방과 대화&amp;채팅하기</mark></h3><div id="b2d6a41c-89a2-46e7-8356-388be0955496" class="column-list"><div id="03d1a760-5095-4656-bf7d-70c5edc8019d" style="width:62.5%" class="column"><ul id="75c49435-f277-455f-9d0f-4503a8a18a48" class="bulleted-list"><li style="list-style-type:disc"><strong>Nearby: </strong>가까이 있는 사람들에게 채팅 보내기</li></ul><ul id="7665d871-9d62-4f48-a0fb-b44f30a4224d" class="bulleted-list"><li style="list-style-type:disc"><strong>Everyone:</strong> 모든 사람들에게 채팅 보내기</li></ul><ul id="27f90697-0ab5-4e38-9613-1d5a93908031" class="bulleted-list"><li style="list-style-type:disc"><strong>특정 사람에게 채팅 보내기:</strong>
+보낼 사람 위에서 오른쪽 마우스 클릭 → Message 보내기</li></ul></div><div id="d2eba70d-9023-429d-bb03-e629fc1d98c0" style="width:37.49999999999999%" class="column"><figure id="58e589de-4eea-4e52-9957-a900ff6490e5" class="image"><a href="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.24.34.png"><img style="width:240px" src="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.24.34.png"/></a></figure></div></div><h3 id="17efc04e-c7f5-4c4c-8394-d0c91c3dc8a9" class="block-color-orange_background"><mark class="highlight-orange_background">화면 공유하기</mark></h3><div id="212d92c0-4bfe-4708-9c4b-93a81276faaa" class="column-list"><div id="ea0f4e1b-6f90-416f-b2a9-55c0e6fa5118" style="width:50%" class="column"><ul id="c5895087-9f01-4acd-803c-0a711560204c" class="bulleted-list"><li style="list-style-type:disc"><strong>하단 바 → 모니터 아이콘 클릭 → 공유할 화면 선택 후 공유</strong></li></ul></div><div id="43365582-22d3-4d4a-823e-839bf8e7f354" style="width:50%" class="column"><figure id="8972a9de-d4ee-447e-a5a6-ac466b9c1093" class="image"><a href="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.29.31.png"><img style="width:480px" src="Gather%20Tow%2080329/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2021-07-22_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.29.31.png"/></a></figure></div></div><h3 id="30d349be-8b20-4a3e-9bc4-2515e36cedbe" class="block-color-pink_background">상대방 위치 찾기 </h3><ul id="8a42e071-ba50-401f-89db-70483a8e0e4f" class="bulleted-list"><li style="list-style-type:disc"><strong>Follow: </strong>자동으로<strong> </strong>상대방을 따라 다닐 수 있습니다.</li></ul><ul id="e9bcdae6-9f9a-4710-990b-a92158a8882c" class="bulleted-list"><li style="list-style-type:disc"><strong>Locate on map: </strong>선으로<strong> </strong>상대방의 위치를 알려줍니다.</li></ul><p id="b805d35d-5c55-4968-8b84-303dce737846" class="">
+</p><p id="3d4b10de-69e2-4e6b-932d-209e664e3e70" class="">
+</p><hr id="92442003-7f73-4e5c-93c0-102cfef32237"/><div id="3ea3a600-5458-404f-b5cb-787c3ab5975a" class="column-list"><div id="6f078b37-8495-4ab9-a9b0-0bd5dea9ac86" style="width:37.5%" class="column"><p id="f5a22602-57d5-460b-8c39-d2f3c055850d" class=""><strong>출처 : 힙밤 Gather Town 사용법</strong></p></div><div id="a6c74cd5-007f-4821-82a7-ab07fcc731a4" style="width:41.666666666666664%" class="column"><p id="567b0d99-fe93-4f72-90ae-1963079ead55" class="">
+</p></div><div id="4ce0f484-bab5-4581-95b7-2ea2917bf124" style="width:20.83333333333334%" class="column"><p id="fdc2b206-17e4-4b75-8729-9d2ba4d7f0c5" class=""><mark class="highlight-gray"><em>Thanks to </em></mark><strong><mark class="highlight-gray"><em>도은</em></mark></strong><mark class="highlight-gray"><em>💓</em></mark></p></div></div></div></article></body></html>
